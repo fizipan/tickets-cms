@@ -1,0 +1,19 @@
+{
+  "name": "cms-ticket",
+  "version": "1.0.0",
+  "description": "Create CMS",
+  "main": "postcss.config.js",
+  "dependencies": {
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./src/tailwindcss/tailwind.css -c ./tailwind.config.js -o ./public/css/styles.css",
+    "watch:css": "npx tailwindcss -i ./src/tailwindcss/tailwind.css -c ./tailwind.config.js -o ./public/css/styles.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hafizh",
+  "license": "ISC"
+}
