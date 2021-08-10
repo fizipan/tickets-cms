@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tickets | Dashboard Admin</title>
+
+    <!-- START: Style CSS -->
+    <link rel="stylesheet" href="../public/css/styles.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../public/assets/favicons/favicon.png" />
+    <!-- END: Style CSS -->
+  </head>
+  <body>
+    <!-- START: Dashboard -->
+    <div class="flex min-h-screen overflow-y-auto" x-data="{ open: true }">
+      <!-- START: Sidebar -->
+      <div
+        class="min-w-[255px] bg-[#2b2d3a] fixed z-50 top-0 bottom-0 left-0 min-h-screen lg:static transition ease-in-out duration-500 sm:duration-700 transform -translate-x-full lg:translate-x-0"
+        :class="{'transform -translate-x-full': open}"
+      >
+        <!-- START: Heading Sidebar -->
+        <div class="flex space-x-3 justify-center items-center px-10 py-8 pb-12">
+          <img src="../public/assets/images/logo.png" class="h-8" alt="Logo" />
+          <h1 class="text-[#A4A6B3] text-lg font-bold">Dashboard Kit</h1>
+        </div>
+        <!-- END: Heading Sidebar -->
+
+        <!-- START: Menu Sidebar -->
+        <ul class="space-y-2">
+          <li class="px-5 py-4 group group-hover:bg-[#878ba0]">
+            <a href="index.html" class="flex text-gray-500 group-hover:text-gray-200 space-x-5 items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
+                <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
+              </svg>
+              <h3>Overview</h3>
+            </a>
+          </li>
+          <li class="px-5 py-4 bg-[#878ba0] bg-opacity-[0.08] border-l-4 border-solid border-gray-200">
+            <a href="tickets.html" class="flex text-gray-200 space-x-5 items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 100 4v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2a2 2 0 100-4V6z" />
+              </svg>
+              <h3>Tickets</h3>
+            </a>
+          </li>
+          <li class="px-5 py-4 group group-hover:bg-[#878ba0]">
+            <a href="#" class="flex text-gray-500 group-hover:text-gray-200 space-x-5 items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z"
+                />
+              </svg>
+              <h3>Ideas</h3>
+            </a>
+          </li>
+          <li class="px-5 py-4 group group-hover:bg-[#878ba0]">
+            <a href="#" class="flex text-gray-500 group-hover:text-gray-200 space-x-5 items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
+                />
+              </svg>
+              <h3>Contacts</h3>
+            </a>
+          </li>
+          <li class="px-5 py-4 group group-hover:bg-[#878ba0]">
+            <a href="#" class="flex text-gray-500 group-hover:text-gray-200 space-x-5 items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+              </svg>
+              <h3>Agents</h3>
+            </a>
+          </li>
+          <li class="px-5 py-4 group group-hover:bg-[#878ba0]">
+            <a href="#" class="flex text-gray-500 group-hover:text-gray-200 space-x-5 items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
+                <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
+              </svg>
+              <h3>Articles</h3>
+            </a>
+          </li>
+          <li class="px-5 py-4 group group-hover:bg-[#878ba0]">
+            <a href="#" class="flex text-gray-500 group-hover:text-gray-200 space-x-5 items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  fill-rule="evenodd"
+                  d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <h3>Settings</h3>
+            </a>
+          </li>
+        </ul>
+        <!-- END: Menu Sidebar -->
+      </div>
+      <!-- END: Sidebar -->
+
+      <!-- START: Page Content -->
+      <main class="flex-grow p-5 lg:p-8 lg:pb-0 overflow-x-hidden">
+        <!-- START: Navbar -->
+        <nav class="flex items-center justify-between">
+          <!-- START: LEFT -->
+          <div class="flex-grow">
+            <h2 class="font-bold text-2xl">Tickets</h2>
+          </div>
+          <!-- END: LEFT -->
+
+          <!-- START: Right -->
+          <div class="flex space-x-6 items-center">
+            <div class="hidden lg:flex space-x-5 border-r items-center border-solid border-gray-400 pr-5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+              </svg>
+            </div>
+            <!-- START: User Profile -->
+            <div class="flex items-center space-x-4">
+              <p class="font-semibold hidden lg:block">Jones Ferdinand</p>
+              <img src="../public/assets/images/user-profile.png" class="rounded-full h-10 ring ring-gray-200 ring-offset-2" alt="" />
+            </div>
+            <!-- END: User Profile -->
+          </div>
+          <!-- END: Right -->
+        </nav>
+        <!-- START: Navbar -->
+
+        <!-- START: Main Content -->
+        <div class="bg-white ring-1 ring-gray-200 rounded-lg mt-10 overflow-x-hidden">
+          <!-- START: Heading  -->
+          <div class="flex justify-between items-center px-8 py-6">
+            <h3 class="font-bold text-lg">All tickets</h3>
+            <div class="flex space-x-2 items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h5a1 1 0 000-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM13 16a1 1 0 102 0v-5.586l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 101.414 1.414L13 10.414V16z"
+                />
+              </svg>
+              <p class="pr-5 font-semibold tracking-wide">Sort</p>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd" />
+              </svg>
+              <p class="font-semibold tracking-wide">Filter</p>
+            </div>
+          </div>
+          <!-- END: Heading  -->
+
+          <!-- START: Table -->
+          <div class="flex flex-col min-h-screen">
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                  <table class="min-w-full divide-y-2 divide-gray-200 mt-5">
+                    <thead class="text-left font-bold text-gray-400 tracking-wide">
+                      <tr>
+                        <th scope="col">Ticket details</th>
+                        <th scope="col">Customer name</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col" class="relative">
+                          <span class="sr-only">Menu</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-sm divide-y divide-gray-200">
+                      <tr>
+                        <td>
+                          <div class="flex items-center space-x-5">
+                            <div class="flex-shrink-0 h-11 w-11">
+                              <img class="h-11 w-11 rounded-full" src="../public/assets/images/table-img/1.png" alt="" />
+                            </div>
+                            <div>
+                              <div class="font-semibold tracking-wide">Contact Email not Linked</div>
+                              <div class="text-gray-300 pt-1">Updated 1 day ago</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">Tom Cruise</div>
+                          <div class="text-gray-300 pt-1">on 24.05.2019</div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">May 26, 2019</div>
+                          <div class="text-gray-300 pt-1">6:30 PM</div>
+                        </td>
+                        <td>
+                          <span class="bg-[#F12B2C] text-white inline-flex rounded-full px-4 py-1 leading-4 text-xs font-bold">HIGH</span>
+                        </td>
+                        <td>
+                          <div x-data="{ dropdownOpen: false }" class="relative inline-block">
+                            <button @click="dropdownOpen = !dropdownOpen" class="p-3 rounded-full hover:bg-gray-100">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                              </svg>
+                            </button>
+                            <div
+                              x-show="dropdownOpen"
+                              @click.away="dropdownOpen = false"
+                              x-transition:enter="transition ease-out duration-100"
+                              x-transition:enter-start="transform opacity-0 scale-95"
+                              x-transition:enter-end="transform opacity-100 scale-100"
+                              x-transition:leave="transition ease-in duration-75"
+                              x-transition:leave-start="transform opacity-100 scale-100"
+                              x-transition:leave-end="transform opacity-0 scale-95"
+                              class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none z-20"
+                            >
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                  <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                </svg>
+                                Edit
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                </svg>
+                                Show
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                Delete
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="flex items-center space-x-5">
+                            <div class="flex-shrink-0 h-11 w-11">
+                              <img class="h-11 w-11 rounded-full" src="../public/assets/images/table-img/2.png" alt="" />
+                            </div>
+                            <div>
+                              <div class="font-semibold tracking-wide">Adding Images to Featured Posts</div>
+                              <div class="text-gray-300 pt-1">Updated 1 day ago</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">Matt Damon</div>
+                          <div class="text-gray-300 pt-1">on 24.05.2019</div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">May 26, 2019</div>
+                          <div class="text-gray-300 pt-1">8:00 AM</div>
+                        </td>
+                        <td>
+                          <span class="bg-yellow-400 text-white inline-flex rounded-full px-4 py-1 leading-4 text-xs font-bold">LOW</span>
+                        </td>
+                        <td>
+                          <div x-data="{ dropdownOpen: false }" class="relative inline-block">
+                            <button @click="dropdownOpen = !dropdownOpen" class="p-3 rounded-full hover:bg-gray-100">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                              </svg>
+                            </button>
+                            <div
+                              x-show="dropdownOpen"
+                              @click.away="dropdownOpen = false"
+                              x-transition:enter="transition ease-out duration-100"
+                              x-transition:enter-start="transform opacity-0 scale-95"
+                              x-transition:enter-end="transform opacity-100 scale-100"
+                              x-transition:leave="transition ease-in duration-75"
+                              x-transition:leave-start="transform opacity-100 scale-100"
+                              x-transition:leave-end="transform opacity-0 scale-95"
+                              class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none z-20"
+                            >
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                  <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                </svg>
+                                Edit
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                </svg>
+                                Show
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                Delete
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="flex items-center space-x-5">
+                            <div class="flex-shrink-0 h-11 w-11">
+                              <img class="h-11 w-11 rounded-full" src="../public/assets/images/table-img/3.png" alt="" />
+                            </div>
+                            <div>
+                              <div class="font-semibold tracking-wide">When will I be charged this month?</div>
+                              <div class="text-gray-300 pt-1">Updated 1 day ago</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">Robert Downey</div>
+                          <div class="text-gray-300 pt-1">on 24.05.2019</div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">May 26, 2019</div>
+                          <div class="text-gray-300 pt-1">7:30 PM</div>
+                        </td>
+                        <td>
+                          <span class="bg-[#F12B2C] text-white inline-flex rounded-full px-4 py-1 leading-4 text-xs font-bold">HIGH</span>
+                        </td>
+                        <td>
+                          <div x-data="{ dropdownOpen: false }" class="relative inline-block">
+                            <button @click="dropdownOpen = !dropdownOpen" class="p-3 rounded-full hover:bg-gray-100">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                              </svg>
+                            </button>
+                            <div
+                              x-show="dropdownOpen"
+                              @click.away="dropdownOpen = false"
+                              x-transition:enter="transition ease-out duration-100"
+                              x-transition:enter-start="transform opacity-0 scale-95"
+                              x-transition:enter-end="transform opacity-100 scale-100"
+                              x-transition:leave="transition ease-in duration-75"
+                              x-transition:leave-start="transform opacity-100 scale-100"
+                              x-transition:leave-end="transform opacity-0 scale-95"
+                              class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none z-20"
+                            >
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                  <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                </svg>
+                                Edit
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                </svg>
+                                Show
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                Delete
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="flex items-center space-x-5">
+                            <div class="flex-shrink-0 h-11 w-11">
+                              <img class="h-11 w-11 rounded-full" src="../public/assets/images/table-img/4.png" alt="" />
+                            </div>
+                            <div>
+                              <div class="font-semibold tracking-wide">Payment not going through</div>
+                              <div class="text-gray-300 pt-1">Updated 2 days ago</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">Christian Bale</div>
+                          <div class="text-gray-300 pt-1">on 24.05.2019</div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">May 25, 2019</div>
+                          <div class="text-gray-300 pt-1">5:00 PM</div>
+                        </td>
+                        <td>
+                          <span class="bg-green-400 text-white inline-flex rounded-full px-4 py-1 leading-4 text-xs font-bold">NORMAL</span>
+                        </td>
+                        <td>
+                          <div x-data="{ dropdownOpen: false }" class="relative inline-block">
+                            <button @click="dropdownOpen = !dropdownOpen" class="p-3 rounded-full hover:bg-gray-100">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                              </svg>
+                            </button>
+                            <div
+                              x-show="dropdownOpen"
+                              @click.away="dropdownOpen = false"
+                              x-transition:enter="transition ease-out duration-100"
+                              x-transition:enter-start="transform opacity-0 scale-95"
+                              x-transition:enter-end="transform opacity-100 scale-100"
+                              x-transition:leave="transition ease-in duration-75"
+                              x-transition:leave-start="transform opacity-100 scale-100"
+                              x-transition:leave-end="transform opacity-0 scale-95"
+                              class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none z-20"
+                            >
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                  <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                </svg>
+                                Edit
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                </svg>
+                                Show
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                Delete
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="flex items-center space-x-5">
+                            <div class="flex-shrink-0 h-11 w-11">
+                              <img class="h-11 w-11 rounded-full" src="../public/assets/images/table-img/5.png" alt="" />
+                            </div>
+                            <div>
+                              <div class="font-semibold tracking-wide">Unable to add replies</div>
+                              <div class="text-gray-300 pt-1">Updated 2 days ago</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">Henry Cavil</div>
+                          <div class="text-gray-300 pt-1">on 24.05.2019</div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">May 25, 2019</div>
+                          <div class="text-gray-300 pt-1">4:00 PM</div>
+                        </td>
+                        <td>
+                          <span class="bg-[#F12B2C] text-white inline-flex rounded-full px-4 py-1 leading-4 text-xs font-bold">HIGH</span>
+                        </td>
+                        <td>
+                          <div x-data="{ dropdownOpen: false }" class="relative inline-block">
+                            <button @click="dropdownOpen = !dropdownOpen" class="p-3 rounded-full hover:bg-gray-100">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                              </svg>
+                            </button>
+                            <div
+                              x-show="dropdownOpen"
+                              @click.away="dropdownOpen = false"
+                              x-transition:enter="transition ease-out duration-100"
+                              x-transition:enter-start="transform opacity-0 scale-95"
+                              x-transition:enter-end="transform opacity-100 scale-100"
+                              x-transition:leave="transition ease-in duration-75"
+                              x-transition:leave-start="transform opacity-100 scale-100"
+                              x-transition:leave-end="transform opacity-0 scale-95"
+                              class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none z-20"
+                            >
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                  <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                </svg>
+                                Edit
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                </svg>
+                                Show
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                Delete
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="flex items-center space-x-5">
+                            <div class="flex-shrink-0 h-11 w-11">
+                              <img class="h-11 w-11 rounded-full" src="../public/assets/images/table-img/6.png" alt="" />
+                            </div>
+                            <div>
+                              <div class="font-semibold tracking-wide">Downtime since last week</div>
+                              <div class="text-gray-300 pt-1">Updated 3 days ago</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">Chris Evans</div>
+                          <div class="text-gray-300 pt-1">on 23.05.2019</div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">May 25, 2019</div>
+                          <div class="text-gray-300 pt-1">2:00 PM</div>
+                        </td>
+                        <td>
+                          <span class="bg-green-400 text-white inline-flex rounded-full px-4 py-1 leading-4 text-xs font-bold">NORMAL</span>
+                        </td>
+                        <td>
+                          <div x-data="{ dropdownOpen: false }" class="relative inline-block">
+                            <button @click="dropdownOpen = !dropdownOpen" class="p-3 rounded-full hover:bg-gray-100">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                              </svg>
+                            </button>
+                            <div
+                              x-show="dropdownOpen"
+                              @click.away="dropdownOpen = false"
+                              x-transition:enter="transition ease-out duration-100"
+                              x-transition:enter-start="transform opacity-0 scale-95"
+                              x-transition:enter-end="transform opacity-100 scale-100"
+                              x-transition:leave="transition ease-in duration-75"
+                              x-transition:leave-start="transform opacity-100 scale-100"
+                              x-transition:leave-end="transform opacity-0 scale-95"
+                              class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none z-20"
+                            >
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                  <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                </svg>
+                                Edit
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                </svg>
+                                Show
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                Delete
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="flex items-center space-x-5">
+                            <div class="flex-shrink-0 h-11 w-11">
+                              <img class="h-11 w-11 rounded-full" src="../public/assets/images/table-img/7.png" alt="" />
+                            </div>
+                            <div>
+                              <div class="font-semibold tracking-wide">Referral Bonusk</div>
+                              <div class="text-gray-300 pt-1">Updated 4 day ago</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">Sam Smith</div>
+                          <div class="text-gray-300 pt-1">on 22.05.2019</div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">May 25, 2019</div>
+                          <div class="text-gray-300 pt-1">11:30 AM</div>
+                        </td>
+                        <td>
+                          <span class="bg-yellow-400 text-white inline-flex rounded-full px-4 py-1 leading-4 text-xs font-bold">LOW</span>
+                        </td>
+                        <td>
+                          <div x-data="{ dropdownOpen: false }" class="relative inline-block">
+                            <button @click="dropdownOpen = !dropdownOpen" class="p-3 rounded-full hover:bg-gray-100">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                              </svg>
+                            </button>
+                            <div
+                              x-show="dropdownOpen"
+                              @click.away="dropdownOpen = false"
+                              x-transition:enter="transition ease-out duration-100"
+                              x-transition:enter-start="transform opacity-0 scale-95"
+                              x-transition:enter-end="transform opacity-100 scale-100"
+                              x-transition:leave="transition ease-in duration-75"
+                              x-transition:leave-start="transform opacity-100 scale-100"
+                              x-transition:leave-end="transform opacity-0 scale-95"
+                              class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none z-20"
+                            >
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                  <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                </svg>
+                                Edit
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                </svg>
+                                Show
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                Delete
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="flex items-center space-x-5">
+                            <div class="flex-shrink-0 h-11 w-11">
+                              <img class="h-11 w-11 rounded-full" src="../public/assets/images/table-img/8.png" alt="" />
+                            </div>
+                            <div>
+                              <div class="font-semibold tracking-wide">How do I change my password?</div>
+                              <div class="text-gray-300 pt-1">Updated 6 days ago</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">Steve Rogers</div>
+                          <div class="text-gray-300 pt-1">on 21.05.2019</div>
+                        </td>
+                        <td>
+                          <div class="font-semibold tracking-wide">May 24, 2019</div>
+                          <div class="text-gray-300 pt-1">1:00 PM</div>
+                        </td>
+                        <td>
+                          <span class="bg-green-400 text-white inline-flex rounded-full px-4 py-1 leading-4 text-xs font-bold">NORMAL</span>
+                        </td>
+                        <td>
+                          <div x-data="{ dropdownOpen: false }" class="relative inline-block">
+                            <button @click="dropdownOpen = !dropdownOpen" class="p-3 rounded-full hover:bg-gray-100">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                              </svg>
+                            </button>
+                            <div
+                              x-show="dropdownOpen"
+                              @click.away="dropdownOpen = false"
+                              x-transition:enter="transition ease-out duration-100"
+                              x-transition:enter-start="transform opacity-0 scale-95"
+                              x-transition:enter-end="transform opacity-100 scale-100"
+                              x-transition:leave="transition ease-in duration-75"
+                              x-transition:leave-start="transform opacity-100 scale-100"
+                              x-transition:leave-end="transform opacity-0 scale-95"
+                              class="origin-top-right absolute right-0 -mt-5 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none z-50"
+                            >
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                  <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                </svg>
+                                Edit
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                </svg>
+                                Show
+                              </a>
+                              <a href="" class="text-gray-700 text-sm flex items-center hover:bg-gray-100 px-4 py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                Delete
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END: Table -->
+
+          <!-- START: Pagination -->
+          <div class="px-8 py-4 flex flex-wrap space-y-2 sm:space-y-0 sm:space-x-6 justify-center lg:justify-end items-center">
+            <div class="inline-flex items-center space-x-2 text-sm">
+              <label for="page" class="text-gray-400 tracking-wide">Rows per page:</label>
+              <select name="page" class="border-transparent pr-5 text-sm lg:text-base" id="page">
+                <option value="All">All</option>
+                <option value="5">5</option>
+                <option value="8" selected>8</option>
+                <option value="10">10</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+            <div class="flex items-center space-x-4 text-gray-400">
+              <span class="mr-3 tracking-wide text-sm">1-8 of 1240</span>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </a>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- END:: Pagination -->
+        </div>
+        <!-- END: Main Content -->
+
+        <!-- Start: Footer -->
+        <footer class="flex justify-center items-center flex-wrap mt-8 p-5">
+          <p class="text-gray-500 text-sm inline-flex items-center">
+            &copy; Copyright 2021-2022 Hafizhmy
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 ml-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+            </svg>
+          </p>
+        </footer>
+        <!-- END: Footer -->
+      </main>
+
+      <!-- START: Page Content -->
+
+      <!-- START: Menu For Mobile -->
+      <button @click="open = ! open" class="bg-[#363740] flex flex-col lg:hidden justify-center items-center space-y-2 rounded-full w-16 h-16 fixed bottom-0 right-5 transform -translate-y-5 shadow-lg">
+        <span class="w-7 h-1 block rounded-full origin-left transition-all ease-in duration-300 bg-white relative" :class="{'transform rotate-45 -translate-y-1 top-[1px] translate-x-1': !open}"> </span>
+        <span class="w-7 h-1 block rounded-full origin-left transition-all ease-in duration-300 bg-white relative" :class="{'transform -rotate-45 translate-y-[0.3rem] translate-x-1': !open}"></span>
+      </button>
+      <!-- END: Menu For Mobile -->
+
+      <!-- END: Dashboard -->
+    </div>
+
+    <!-- START: Scipt -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- END: Scipt -->
+  </body>
+</html>

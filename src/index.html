@@ -16,14 +16,8 @@
     <div class="flex min-h-screen overflow-y-auto" x-data="{ open: true }">
       <!-- START: Sidebar -->
       <div
-        x-show="open"
-        x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
-        x-transition:enter-start="-translate-x-full"
-        x-transition:enter-end="translate-x-0"
-        x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
-        x-transition:leave-start="translate-x-0"
-        x-transition:leave-end="-translate-x-full"
-        class="min-w-[255px] bg-[#2b2d3a] fixed top-0 bottom-0 left-0 min-h-screen lg:static"
+        class="min-w-[255px] bg-[#2b2d3a] fixed z-50 top-0 bottom-0 left-0 min-h-screen lg:static transition ease-in-out duration-500 sm:duration-700 transform -translate-x-full lg:translate-x-0"
+        :class="{'transform -translate-x-full': open}"
       >
         <!-- START: Heading Sidebar -->
         <div class="flex space-x-3 justify-center items-center px-10 py-8 pb-12">
@@ -35,7 +29,7 @@
         <!-- START: Menu Sidebar -->
         <ul class="space-y-2">
           <li class="px-5 py-4 bg-[#878ba0] bg-opacity-[0.08] border-l-4 border-solid border-gray-200">
-            <a href="#" class="flex text-gray-200 space-x-5 items-center">
+            <a href="index.html" class="flex text-gray-200 space-x-5 items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
@@ -44,7 +38,7 @@
             </a>
           </li>
           <li class="px-5 py-4 group group-hover:bg-[#878ba0]">
-            <a href="#" class="flex text-gray-500 group-hover:text-gray-200 space-x-5 items-center">
+            <a href="tickets.html" class="flex text-gray-500 group-hover:text-gray-200 space-x-5 items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 100 4v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2a2 2 0 100-4V6z" />
               </svg>
@@ -106,7 +100,7 @@
       <!-- END: Sidebar -->
 
       <!-- START: Page Content -->
-      <main class="flex-grow p-8 overflow-x-hidden">
+      <main class="flex-grow p-5 lg:p-8 lg:pb-0 overflow-x-hidden">
         <!-- START: Navbar -->
         <nav class="flex items-center justify-between">
           <!-- START: LEFT -->
@@ -137,7 +131,7 @@
         <!-- START: Navbar -->
 
         <!-- START: Main Content -->
-        <!-- START: Card -->
+        <!-- START: Card Count -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 text-center">
           <div class="bg-white w-full h-[134px] rounded-lg grid place-content-center ring-1 group hover:ring-blue-600 ring-gray-200 cursor-pointer">
             <h4 class="font-bold text-gray-400 text-lg tracking-wide mb-2 group-hover:text-blue-600">Unresolved</h4>
@@ -156,25 +150,112 @@
             <div class="text-gray-600 font-bold text-4xl group-hover:text-blue-600">64</div>
           </div>
         </div>
-        <!-- END: Card -->
+        <!-- END: Card Count -->
 
         <!-- START: Chart -->
-        <div class="bg-white rounded-lg overflow-hidden mt-10 w-full h-[50vh] lg:h-[80vh] p-10">
+        <div class="bg-white rounded-lg overflow-hidden mt-10 w-full h-[50vh] lg:h-[85vh] p-5 lg:p-8 ring-1 ring-gray-200">
           <h2 class="text-[19px] font-bold pb-2">Today’s trends</h2>
           <p class="text-sm text-gray-400">as of 25 May 2019, 09:41 PM</p>
-          <canvas class="pb-10 pt-2" id="chartLine"></canvas>
+          <canvas class="pb-12 pt-4" id="chartLine"></canvas>
         </div>
         <!-- END: Chart -->
 
+        <!-- START: Card Task -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10">
+          <!-- Left -->
+          <div class="bg-white rounded-lg w-full h-full max-h-[360px] ring-1 ring-gray-200">
+            <h2 class="flex justify-between items-center font-bold text-[19px] px-5 lg:px-8 pt-8 pb-2">Unresolved tickets <a href="#" class="font-semibold text-sm text-blue-600 hover:underline">View details</a></h2>
+            <p class="text-sm text-gray-400 tracking-wide px-5 lg:px-8">Group: <span class="text-gray-700 font-semibold">Support</span></p>
+
+            <!-- List -->
+            <ul class="mt-5 divide-y-2 divide-gray-200">
+              <li class="flex justify-between py-5 px-5 lg:px-8">
+                <p class="font-semibold tracking-wide text-sm">Waiting on Feature Request</p>
+                <p class="text-gray-400 text-sm">4238</p>
+              </li>
+              <li class="flex justify-between py-5 px-5 lg:px-8">
+                <p class="font-semibold tracking-wide text-sm">Awaiting Customer Response</p>
+                <p class="text-gray-400 text-sm">1005</p>
+              </li>
+              <li class="flex justify-between py-5 px-5 lg:px-8">
+                <p class="font-semibold tracking-wide text-sm">Awaiting Developer Fix</p>
+                <p class="text-gray-400 text-sm">914</p>
+              </li>
+              <li class="flex justify-between py-5 px-5 lg:px-8">
+                <p class="font-semibold tracking-wide text-sm">Pending</p>
+                <p class="text-gray-400 text-sm">281</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right -->
+          <div class="bg-white rounded-lg w-full h-full max-h-[360px] ring-1 ring-gray-200">
+            <h2 class="flex justify-between items-center font-bold text-[19px] px-5 lg:px-8 pt-8 pb-2">Tasks <a href="#" class="font-semibold text-sm text-blue-600 hover:underline">View all</a></h2>
+            <p class="text-sm text-gray-400 tracking-wide px-5 lg:px-8">Today</p>
+
+            <!-- List -->
+            <ul class="divide-y-2 divide-gray-200 mt-5">
+              <!-- <li class="flex justify-between border-b border-solid border-gray-300 py-5 px-5 lg:px-8">
+                <input type="text" class="border-0 flex-grow mr-4 text-sm focus:ring-0 p-0 placeholder-gray-400" placeholder="Create new task" />
+                <button class="bg-gray-200 p-2 rounded-xl transform transition hover:scale-125">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 font-bold text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </li> -->
+              <li class="flex justify-between py-5 px-5 lg:px-8">
+                <label class="inline-flex items-center space-x-4">
+                  <input type="checkbox" class="rounded-full focus:ring-0 h-5 w-5" />
+                  <span class="font-semibold tracking-wide text-sm">Finish ticket update</span>
+                </label>
+                <span class="bg-yellow-400 text-white px-4 py-1 rounded-lg text-[11px] tracking-wide font-bold leading-tight">URGENT</span>
+              </li>
+              <li class="flex justify-between py-5 px-5 lg:px-8">
+                <label class="inline-flex items-center space-x-4">
+                  <input type="checkbox" class="rounded-full focus:ring-0 h-5 w-5" />
+                  <span class="font-semibold tracking-wide text-sm">Finish ticket update</span>
+                </label>
+                <span class="bg-yellow-400 text-white px-4 py-1 rounded-lg text-[11px] tracking-wide font-bold leading-tight">URGENT</span>
+              </li>
+              <li class="flex justify-between py-5 px-5 lg:px-8">
+                <label class="inline-flex items-center space-x-4">
+                  <input type="checkbox" class="rounded-full focus:ring-0 h-5 w-5" />
+                  <span class="font-semibold tracking-wide text-sm">Create new ticket example</span>
+                </label>
+                <span class="bg-green-400 text-white px-4 py-1 rounded-lg text-[11px] tracking-wide font-bold leading-tight">NEW</span>
+              </li>
+              <li class="flex justify-between py-5 px-5 lg:px-8">
+                <label class="inline-flex items-center space-x-4">
+                  <input type="checkbox" checked class="rounded-full focus:ring-0 h-5 w-5" />
+                  <span class="font-semibold tracking-wide text-sm">Update ticket report</span>
+                </label>
+                <span class="bg-gray-200 text-gray-400 px-4 py-1 rounded-lg text-[11px] tracking-wide font-bold leading-tight">DEFAULT</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- END: Card Task -->
+
         <!-- END: Main Content -->
+
+        <!-- Start: Footer -->
+        <footer class="flex justify-center items-center flex-wrap mt-8 p-5">
+          <p class="text-gray-500 text-sm inline-flex items-center">
+            &copy; Copyright 2021-2022 Hafizhmy
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 ml-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+            </svg>
+          </p>
+        </footer>
+        <!-- END: Footer -->
       </main>
 
       <!-- START: Page Content -->
 
       <!-- START: Menu For Mobile -->
       <button @click="open = ! open" class="bg-[#363740] flex flex-col lg:hidden justify-center items-center space-y-2 rounded-full w-16 h-16 fixed bottom-0 right-5 transform -translate-y-5 shadow-lg">
-        <span class="w-6 h-1 block rounded-full bg-white relative"></span>
-        <span class="w-6 h-1 block rounded-full bg-white relative"></span>
+        <span class="w-7 h-1 block rounded-full origin-left transition-all ease-in duration-300 bg-white relative" :class="{'transform rotate-45 -translate-y-1 top-[1px] translate-x-1': !open}"> </span>
+        <span class="w-7 h-1 block rounded-full origin-left transition-all ease-in duration-300 bg-white relative" :class="{'transform -rotate-45 translate-y-[0.3rem] translate-x-1': !open}"></span>
       </button>
       <!-- END: Menu For Mobile -->
 

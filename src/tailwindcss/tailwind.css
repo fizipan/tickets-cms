@@ -10,4 +10,19 @@
     font-family: 'Mulish', sans-serif;
     @apply bg-[#F7F8FC];
   }
+
+  th:first-child,
+  td:first-child,
+  th:last-child,
+  td:last-child {
+    @apply px-8;
+  }
+
+  th {
+    @apply pb-3 px-6;
+  }
+
+  td {
+    @apply py-5 px-6 whitespace-nowrap;
+  }
 }
